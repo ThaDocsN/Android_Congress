@@ -1,9 +1,10 @@
-package com.lambdaschool.congressdetails;
+package com.lambdaschool.congressdetails.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.lambdaschool.congressdataapiaccess.CongressDao;
+import com.lambdaschool.congressdetails.R;
 
 
 public class ListActivity extends AppCompatActivity {
