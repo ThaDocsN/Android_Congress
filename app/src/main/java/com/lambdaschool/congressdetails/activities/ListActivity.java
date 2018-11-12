@@ -4,9 +4,9 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,8 +38,8 @@ public class ListActivity extends AppCompatActivity {
         viewModel.getOverView().observe(this, new Observer<ArrayList<CongresspersonOverview>>() {
             @Override
             public void onChanged(@Nullable ArrayList<CongresspersonOverview> congresspersonOverviews) {
-                if (congresspersonOverviews != null){
-                    for (CongresspersonOverview person:congresspersonOverviews){
+                if (congresspersonOverviews != null) {
+                    for (CongresspersonOverview person : congresspersonOverviews) {
                         parentLayout.addView(getDefaultTextView(person));
 
                     }
@@ -50,7 +50,7 @@ public class ListActivity extends AppCompatActivity {
         CongressDao.getAllMembers();
     }
 
-    TextView getDefaultTextView(final CongresspersonOverview person){
+    TextView getDefaultTextView(final CongresspersonOverview person) {
         TextView view = new TextView(context);
         String personName = new StringBuilder().append(person.getFirstName()).append(" ").append(person.getLastName()).append("\n").append(person.getParty()).append("-").append(person.getState()).toString();
         final String idTag = person.getId();

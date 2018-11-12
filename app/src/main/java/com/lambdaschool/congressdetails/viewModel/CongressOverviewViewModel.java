@@ -10,16 +10,16 @@ import java.util.ArrayList;
 
 public class CongressOverviewViewModel extends ViewModel {
 
-    private MutableLiveData<ArrayList<CongresspersonOverview>>overviewList;
+    private MutableLiveData<ArrayList<CongresspersonOverview>> overviewList;
 
-    public MutableLiveData<ArrayList<CongresspersonOverview>> getOverView(){
-        if (overviewList == null){
+    public MutableLiveData<ArrayList<CongresspersonOverview>> getOverView() {
+        if (overviewList == null) {
             load();
         }
         return overviewList;
     }
 
-    private void load(){
+    private void load() {
         overviewList = CongressPersonOverviewRepository.getOverList();
     }
 }

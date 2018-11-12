@@ -7,7 +7,7 @@ import com.lambdaschool.congressdataapiaccess.CongresspersonDetails;
 
 public class DetailCongressPersonRepo {
 
-    public static MutableLiveData<CongresspersonDetails> getDetails(String id){
+    public static MutableLiveData<CongresspersonDetails> getDetails(String id) {
         final MutableLiveData<CongresspersonDetails> liveData = new MutableLiveData<>();
         CongresspersonDetails profile = CongressDao.getMemberDetails(id);
         liveData.setValue(profile);

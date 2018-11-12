@@ -9,14 +9,15 @@ import com.lambdaschool.congressdetails.repo.DetailCongressPersonRepo;
 
 public class DetailCongressPersonViewModel extends ViewModel {
     private MutableLiveData<CongresspersonDetails> liveData;
-    public LiveData<CongresspersonDetails> getDetails(String id){
-        if (liveData == null){
+
+    public LiveData<CongresspersonDetails> getDetails(String id) {
+        if (liveData == null) {
             loadData(id);
         }
         return liveData;
     }
 
-    private void loadData(String id){
+    private void loadData(String id) {
         liveData = DetailCongressPersonRepo.getDetails(id);
     }
 }
