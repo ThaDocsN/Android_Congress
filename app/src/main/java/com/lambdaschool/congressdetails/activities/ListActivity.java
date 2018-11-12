@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +21,7 @@ import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
 
+    public static final String CONGRESS_PERSON_ID = "person_id";
     Context context;
     CongressOverviewViewModel viewModel;
     LinearLayout parentLayout;
@@ -52,11 +52,19 @@ public class ListActivity extends AppCompatActivity {
 
     TextView getDefaultTextView(final CongresspersonOverview person){
         TextView view = new TextView(context);
-        String personName = String.format("%s %s", person.getFirstName(), person.getLastName());
-        String idTag = person.getId();
+        String personName = new StringBuilder().append(person.getFirstName()).append(" ").append(person.getLastName()).append("\n").append(person.getParty()).append("-").append(person.getState()).toString();
+        final String idTag = person.getId();
         view.setTag(idTag);
         view.setText(personName);
         view.setTextSize(28);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCongressPerson = new Intent(context, DetailCongressPerson.class);
+                intentCongressPerson.putExtra(CONGRESS_PERSON_ID, idTag);
+                startActivity(intentCongressPerson);
+            }
+        });
 
         return view;
     }
